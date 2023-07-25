@@ -25,5 +25,8 @@ E(5).qlim = [0 120*pi/180];
 
 robot = SerialLink(E, 'name', 'robo 5dof');
 
+client = tcpclient("192.168.1.106", 54321);
+data = "hello from MATLAB!";
+
 figure(1)
-robot.teach('callback', @(robot, q) get_teach_config(robot));
+robot.teach('callback', @(robot, q) get_teach_config(robot, client));
