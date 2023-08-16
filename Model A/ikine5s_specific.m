@@ -37,6 +37,26 @@ function [ikine5s] = ikine5s_specific(Kf)
         theta4 = theta4 + pi;
     end
 
+    theta1 = theta1 - pi/6;
+    theta2 = theta2 - pi/6;
+    theta4 = theta4 + pi/2;
+
+    while theta1 > pi 
+        theta1 = theta1 - pi;
+    end
+    while theta2 > pi 
+        theta2 = theta2 - pi;
+    end
+    while theta3 > pi 
+        theta3 = theta3 - pi;
+    end
+    while theta4 > pi 
+        theta4 = theta4 - pi;
+    end
+    while theta5 > pi 
+        theta5 = theta5 - pi;
+    end
+
     ikine5s = [theta1, theta2, theta3, theta4, theta5];
 end
 

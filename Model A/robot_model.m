@@ -13,9 +13,9 @@ E(3) = Link([0 0  L3 0],    'standard');
 E(4) = Link([0 0  L4  -pi/2],'standard');
 E(5) = Link([0 L5 0  0],    'standard');
 
-% E(1).offset = pi/6;
-% E(2).offset = pi/6;
-% E(4).offset = -pi/2;
+E(1).offset = pi/6;
+E(2).offset = pi/6;
+E(4).offset = -pi/2;
 
 E(1).qlim = [0 120*pi/180];
 E(2).qlim = [0 120*pi/180];
