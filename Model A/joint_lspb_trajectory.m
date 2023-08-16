@@ -30,15 +30,15 @@ q1 = [0.2618 2.0944 1.633628 0.439823 1.0472];
 qf = [2.0944 0.9110619 1.528908 1.67552 1.0472];
 
 t = 0:0.03:5;
-[Q1, Qd1, Qdd1] = jtraj(q0, q1, t);
-%[Q2, Qd2, Qdd2] = jtraj(q1, qf, t);
+[Q1, Qd1, Qdd1] = mtraj(@lspb, q0, q1, t);
+%[Q2, Qd2, Qdd2] = mtraj(@lspb, q1, qf, t);
 
 L = {'r', 'LineWidth', 1.5};
 
 figure(1)
 robot.plot(Q1, 'trail', L);
 %hold on;
-%robot.plot(Q2, 'trail', L)
+%robot.plot(Q2, 'trail', L);
 
 figure(2)
 subplot(3,1,1);
@@ -46,11 +46,11 @@ plot(t, 180/pi*Q1);
 legend('\theta_1','\theta_2','\theta_3','\theta_4','\theta_5');
 ylabel('angulo [graus]')
 subplot(3,1,2);
-plot(t, 180/pi*Qd1)
+plot(t, (180/pi*Qd1)/0.03)
 legend('\omega_1','\omega_2','\omega_3','\omega_4','\omega_5')
 ylabel('velocidade angular [º/s]')
 subplot(3,1,3)
-plot(t, 180/pi*Qdd1)
+plot(t, (180/pi*Qdd1)/0.03)
 legend('\alpha_1','\alpha_2','\alpha_3','\alpha_4','\alpha_5')
 ylabel('aceleração angular [º/s^2]')
 xlabel('tempo [s]')
