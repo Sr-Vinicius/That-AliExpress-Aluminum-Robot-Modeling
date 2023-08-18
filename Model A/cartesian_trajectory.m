@@ -25,5 +25,17 @@ E(5).qlim = [0 120*pi/180];
 
 robot = SerialLink(E, 'name', 'robo 5dof');
 
+T1 = robot.fkine([pi/2 pi/3 pi/3 2*pi/3 0]);
+T2 = robot.fkine([0 7*pi/18 pi/4 2*pi/3 0]);
+
+t = 0: 0.03: 3; 
+Ts = ctraj(T1,T2,length(t));
+
+for i=1: 1: length(t)
+    Q(i,:) = ikine5s_specific(Ts(i));
+end
+
+L = {'r', 'LineWidth', 1.5};
+
 figure(1)
-robot.teach();
+robot.plot(Q, 'trail', L);
